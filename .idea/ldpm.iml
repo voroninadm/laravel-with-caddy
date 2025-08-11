@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="WEB_MODULE" version="4">
+  <component name="NewModuleRootManager">
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/project/app" isTestSource="false" packagePrefix="App\" />
+      <sourceFolder url="file://$MODULE_DIR$/project/database/factories" isTestSource="false" packagePrefix="Database\Factories\" />
+      <sourceFolder url="file://$MODULE_DIR$/project/database/seeders" isTestSource="false" packagePrefix="Database\Seeders\" />
+      <sourceFolder url="file://$MODULE_DIR$/project/tests" isTestSource="true" packagePrefix="Tests\" />
+      <sourceFolder url="file://$MODULE_DIR$/project/app/Services" isTestSource="false" packagePrefix="AppServices\" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/archtechx/enums" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/barryvdh/laravel-debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/dragon-code/contracts" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/dragon-code/pretty-array" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/dragon-code/support" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/ezyang/htmlpurifier" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/inertiajs/inertia-laravel" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/actions" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/attributes" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/common" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/http-statuses" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/json-fallback" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/lang" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/locale-list" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/locales" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/native-country-names" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/native-currency-names" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/native-locale-names" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-lang/publisher" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel-notification-channels/telegram" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel/breeze" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/laravel/sanctum" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/maatwebsite/excel" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/maennchen/zipstream-php" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/markbaker/complex" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/markbaker/matrix" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/maximebf/debugbar" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/paragonie/random_compat" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/phpoffice/phpspreadsheet" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/backtrace" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/browsershot" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/db-dumper" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/flare-client-php" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/ignition" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/laravel-backup" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/laravel-ignition" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/laravel-package-tools" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/laravel-pdf" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/laravel-permission" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/laravel-signal-aware-command" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/spatie/temporary-directory" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/symfony/polyfill-php72" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/symfony/polyfill-php81" />
+      <excludeFolder url="file://$MODULE_DIR$/project/vendor/tightenco/ziggy" />
+    </content>
+    <orderEntry type="inheritedJdk" />
+    <orderEntry type="sourceFolder" forTests="false" />
+  </component>
+</module>

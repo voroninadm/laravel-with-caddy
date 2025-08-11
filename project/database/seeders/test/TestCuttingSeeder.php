@@ -1,0 +1,123 @@
+<?php
+
+namespace Database\Seeders\test;
+
+use App\Models\Elog\Cutting;
+use Illuminate\Database\Seeder;
+
+class TestCuttingSeeder extends Seeder
+{
+    /**
+     * Run the database seeds.
+     *
+     * @return void
+     */
+    public function run(): void
+    {
+        Cutting::create([
+                'machine_id' => 'Бобинорезка-3',
+                'work_date' => '2025-01-01',
+                'work_shift' => 1,
+                'master_id' => 'Поцко С.С.',
+                'operator_id' => 'Иванова М.Л.',
+                'packer_id' => 'Бойцова М.В.',
+                'student_id' => null,
+                'tkn' => '12345a',
+                'work_plan' => 100.00,
+                'work_start' => '2025-01-01 08:00:00',
+                'work_finish' => '2025-01-01 16:00:00',
+                'work_fact' => 95.00,
+                'customer' => 'Тестовый заказчик',
+                'print_title' => 'Тестовый заказ',
+                'circulation' => 500.00,
+                'product_type' => 1,
+                'mat1_id' => 1,
+                'mat2_id' => null,
+                'mat3_id' => null,
+                'thickness1' => 10.00,
+                'thickness2' => null,
+                'thickness3' => null,
+                'canvas_width' => 210.00,
+                'count_plan' => 100.00,
+                'count' => 95.00,
+                'streams' => 2,
+                'stream_width' => 10,
+                'workout_mass' => 10.00,
+                'otk_mass' => 5.00,
+                'workout_length' => 200.00,
+                'workout_m2' => 400.00,
+                'raw_meters' => 10.00,
+                'waste_plan' => 10.00,
+                'waste_print' => 5.00,
+                'waste_lam' => 5.00,
+                'waste_edge' => 5.00,
+                'waste_sum' => 15.00,
+                'electro' => null,
+                'mechanical' => null,
+                'speed' => null,
+                'tech_service' => null,
+                'knifes_barbell' => null,
+                'reconfig' => null,
+                'no_human' => null,
+                'no_work' => null,
+                'no_raw' => null,
+                'prepare_ok' => null,
+                'diff_circulation' => 1221,
+                'notes' => 'Тестовая нормальная смена',
+                'is_idle' => 0,
+            ]);
+
+        Cutting::create([
+                'machine_id' => 'Интермат-3',
+                'work_date' => '2025-01-02',
+                'work_shift' => 2,
+                'master_id' => 'Поцко С.С.',
+                'operator_id' => null,
+                'packer_id' => null,
+                'student_id' => null,
+                'tkn' => null,
+                'work_plan' => null,
+                'work_start' => null,
+                'work_finish' => null,
+                'work_fact' => null,
+                'customer' => null,
+                'print_title' => null,
+                'circulation' => null,
+                'product_type' => null,
+                'mat1_id' => null,
+                'mat2_id' => null,
+                'mat3_id' => null,
+                'thickness1' => null,
+                'thickness2' => null,
+                'thickness3' => null,
+                'canvas_width' => null,
+                'count_plan' => null,
+                'count' => null,
+                'streams' => null,
+                'stream_width' => null,
+                'workout_mass' => null,
+                'otk_mass' => null,
+                'workout_length' => null,
+                'workout_m2' => null,
+                'raw_meters' => null,
+                'waste_plan' => null,
+                'waste_print' => null,
+                'waste_lam' => null,
+                'waste_edge' => null,
+                'waste_sum' => null,
+                'electro' => 12,
+                'mechanical' => null,
+                'speed' => null,
+                'tech_service' => null,
+                'knifes_barbell' => null,
+                'reconfig' => null,
+                'no_human' => null,
+                'no_work' => null,
+                'no_raw' => null,
+                'prepare_ok' => null,
+                'diff_circulation' => null,
+                'notes' => 'Тестовая смена 12 часов простоя электрика',
+                'is_idle' => 1,
+        ]);
+    }
+}

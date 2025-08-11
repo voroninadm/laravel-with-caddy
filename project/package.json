@@ -1,0 +1,36 @@
+{
+    "private": true,
+    "type": "module",
+    "scripts": {
+        "dev": "vite --host",
+        "preview": "vite preview",
+        "clear_build": "rm -rf public/build",
+        "clear_cache": "php artisan optimize:clear",
+        "build": "vite build",
+        "staging": "vite build --mode staging"
+    },
+    "devDependencies": {
+        "@inertiajs/vue3": "^2.0.0",
+        "@tailwindcss/forms": "^0.5.3",
+        "@vitejs/plugin-vue": "^5.2.1",
+        "axios": "^1.6.1",
+        "laravel-echo": "^1.16.0",
+        "laravel-vite-plugin": "^1.2.0",
+        "pusher-js": "^8.3.0",
+        "tailwindcss": "^4.0.4",
+        "vite": "^6.1.0",
+        "vue": "^3.5.0"
+    },
+    "dependencies": {
+        "@tailwindcss/vite": "^4.0.4",
+        "@vuepic/vue-datepicker": "^11.0.0",
+        "animate.css": "^4.1.1",
+        "file-saver": "^2.0.5",
+        "maska": "^3.0.4",
+        "moment": "^2.30.0",
+        "puppeteer": "^24.1.0",
+        "vue-toast-notification": "^3.1.1",
+        "vuedraggable": "^4.1.0",
+        "vuelidate": "^0.7.7"
+    }
+}

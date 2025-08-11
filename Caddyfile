@@ -1,0 +1,18 @@
+https://localhost {
+    tls internal
+
+    root * /usr/share/nginx/html/public
+    encode gzip
+    php_fastcgi app:9000
+    file_server
+
+    handle_path /storage/* {
+        root * /usr/share/nginx/html
+        file_server
+    }
+
+    log {
+        output stdout
+        format console
+    }
+}

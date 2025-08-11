@@ -1,0 +1,134 @@
+services:
+  app:
+    build:
+      context: ./project
+      dockerfile: Dockerfile
+    restart: no
+    ports:
+      - 9000:9000
+    depends_on:
+      - mysql
+    env_file:
+      - ./project/.env
+    volumes:
+      - ./project/storage:/usr/share/nginx/html/storage:rw
+      - ./project/public:/usr/share/nginx/html/public:rw
+    networks:
+      - lara
+
+#  nginx:
+#    image: nginx:1-alpine
+#    ports:
+#      - 80:80
+#      - 443:443
+#    volumes:
+#      - ./nginx.conf:/etc/nginx/templates/default.conf.template
+#      - ./project/storage:/usr/share/nginx/html/storage:rw
+#      - ./project/public:/usr/share/nginx/html/public:rw
+#    networks:
+#      - lara
+  caddy:
+    image: caddy:2-alpine
+    restart: unless-stopped
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./Caddyfile:/etc/caddy/Caddyfile
+      - ./project/public:/usr/share/nginx/html/public
+      - ./project/storage:/usr/share/nginx/html/storage
+      - caddy_data:/data
+      - caddy_config:/config
+    networks:
+      - lara
+  mysql:
+    image: 'mysql:latest'
+    ports:
+      - '${FORWARD_DB_PORT:-3306}:3306'
+    volumes:
+      - mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: '${DB_PASSWORD}'
+      MYSQL_ROOT_HOST: '%'
+      MYSQL_DATABASE: '${DB_DATABASE}'
+      MYSQL_USER: '${DB_USERNAME}'
+      MYSQL_PASSWORD: '${DB_PASSWORD}'
+      restart: no
+    networks:
+      - lara
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+  redis:
+    image: 'redis:alpine'
+    ports:
+      - '${FORWARD_REDIS_PORT:-6379}:6379'
+    networks:
+      - lara
+    restart: no
+  horizon:
+    build:
+      context: ./project
+      dockerfile: Dockerfile
+    restart: no
+    command: php artisan horizon
+    environment:
+      IS_WORKER: "true"
+    env_file:
+      - ./project/.env
+    depends_on:
+      - mysql
+      - redis
+    volumes:
+      - ./project/storage:/usr/share/nginx/html/storage:rw
+      - ./project/public:/usr/share/nginx/html/public:rw
+    networks:
+      - lara
+  reverb:
+    build:
+      context: ./project
+      dockerfile: Dockerfile
+    command: >
+      dockerize -wait tcp://mysql:3306 -timeout 60s
+      php artisan reverb:start --host=0.0.0.0 --port=6001
+    ports:
+      - "6001:6001"
+    environment:
+      IS_WORKER: "true"
+    depends_on:
+      mysql:
+        condition: service_healthy
+      redis:
+        condition: service_started
+    env_file:
+      - ./project/.env
+    volumes:
+      - ./project/storage:/usr/share/nginx/html/storage:rw
+      - ./project/public:/usr/share/nginx/html/public:rw
+    networks:
+      - lara
+  phpmyadmin:
+    image: phpmyadmin:5.2.1
+    environment:
+      PMA_HOST: mysql
+      UPLOAD_LIMIT: 100000000
+    ports:
+      - '${APP_DB_ADMIN_PORT:-8000}:80'
+    networks:
+      - lara
+    restart: no
+
+networks:
+  lara:
+    driver: bridge
+
+volumes:
+  storage:
+  public:
+  redis-data:
+  caddy_data:
+  caddy_config:
+  mysql_data:
+
