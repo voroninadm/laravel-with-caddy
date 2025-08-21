@@ -1,16 +1,37 @@
-https://localhost {
+localhost.test {
+    # Используем self-signed TLS (для локальной разработки)
     tls internal
 
-    root * /usr/share/nginx/html/public
-    encode gzip
-    php_fastcgi app:9000
-    file_server
+    # Корневая папка Laravel
+    root * /srv/public
 
-    handle_path /storage/* {
-        root * /usr/share/nginx/html
-        file_server
+    # Сжатие
+    encode gzip
+
+    # PHP FastCGI
+    php_fastcgi app:9000 {
+        env APP_ENV production
+        env APP_DEBUG false
     }
 
+    # Раздача файлов
+    file_server {
+        hide .env
+        hide .git
+        hide .gitignore
+        hide composer.*
+        hide package.json
+    }
+
+    # Доступ к storage
+    handle_path /storage/* {
+        root * /srv
+        file_server {
+            browse
+        }
+    }
+
+    # Логи
     log {
         output stdout
         format console

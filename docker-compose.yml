@@ -11,8 +11,8 @@ services:
     env_file:
       - ./project/.env
     volumes:
-      - ./project/storage:/usr/share/nginx/html/storage:rw
-      - ./project/public:/usr/share/nginx/html/public:rw
+      - ./project/storage:/srv/storage:rw
+      - ./project/public:/srv/public:rw
     networks:
       - lara
 
@@ -27,20 +27,22 @@ services:
 #      - ./project/public:/usr/share/nginx/html/public:rw
 #    networks:
 #      - lara
+
   caddy:
-    image: caddy:2-alpine
+    image: caddy:latest
     restart: unless-stopped
     ports:
       - "80:80"
       - "443:443"
     volumes:
       - ./Caddyfile:/etc/caddy/Caddyfile
-      - ./project/public:/usr/share/nginx/html/public
-      - ./project/storage:/usr/share/nginx/html/storage
-      - caddy_data:/data
-      - caddy_config:/config
+      - ./project/public:/srv/public:rw
+      - ./project/storage:/srv/storage:rw
+      - ./caddy_data:/data
+      - ./caddy_config:/config
     networks:
       - lara
+
   mysql:
     image: 'mysql:latest'
     ports:
@@ -61,6 +63,7 @@ services:
       interval: 10s
       timeout: 5s
       retries: 5
+
   redis:
     image: 'redis:alpine'
     ports:
@@ -68,6 +71,7 @@ services:
     networks:
       - lara
     restart: no
+
   horizon:
     build:
       context: ./project
@@ -82,10 +86,11 @@ services:
       - mysql
       - redis
     volumes:
-      - ./project/storage:/usr/share/nginx/html/storage:rw
-      - ./project/public:/usr/share/nginx/html/public:rw
+      - ./project/storage:/srv/storage:rw
+      - ./project/public:/srv/public:rw
     networks:
       - lara
+
   reverb:
     build:
       context: ./project
@@ -105,10 +110,11 @@ services:
     env_file:
       - ./project/.env
     volumes:
-      - ./project/storage:/usr/share/nginx/html/storage:rw
-      - ./project/public:/usr/share/nginx/html/public:rw
+      - ./project/storage:/srv/storage:rw
+      - ./project/public:/srv/public:rw
     networks:
       - lara
+
   phpmyadmin:
     image: phpmyadmin:5.2.1
     environment:
@@ -131,4 +137,3 @@ volumes:
   caddy_data:
   caddy_config:
   mysql_data:
-
